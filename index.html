@@ -238,7 +238,7 @@
   try { name = decodeURIComponent(raw); } catch(e) { name = raw; }
   name = name.replace(/[-_]+/g, ' ').replace(/[^\p{L}\p{N} ]/gu, '').trim().slice(0, 30);
   if (name) {
-    name = name.replace(/\b\p{L}/gu, function(c){ return c.toUpperCase(); });
+    name = name.split(' ').map(function(w){ return w.charAt(0).toUpperCase() + w.slice(1); }).join(' ');
     document.getElementById('confirmTitle').textContent = name + ', não esquece de confirmar presença';
     document.getElementById('greet').textContent = 'E aí ' + name + ', bora celebrar mais um ano de vida comigo?';
     
